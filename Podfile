@@ -8,5 +8,6 @@ target 'Jukebox' do
   # Pods for Jukebox
 
 pod 'Firebase/Core'
+pod 'Firebase/Database'
 
 end
