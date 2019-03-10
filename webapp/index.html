@@ -3,16 +3,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <!-- Bootstrap CSS 
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    -->
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <title>Hello Jukebox!</title> <style>
       * {
-        background-color: #4D4D4D;
+        /* background-color: #4D4D4D; */
       }
       h1 {
-        font-family: sans-serif;
-        font-size: 64px;
+        font-family: 'PT Sans', sans-serif;
+        font-weight:bold;
+        font-size: 70px;
         color: #CCC;
         padding: 5px;
         margin: 5px;
@@ -22,24 +26,73 @@
         margin: 10px;
       }
       li {
-        font-family: sans-serif;
-        background-color:gold;
+        font-family: 'PT Sans', sans-serif;
+        font-weight:530;
+        /* background-color:gold; */
+        font-size: 30px;
+        color: #414141;
         float: left;
         clear: both;
         padding: 5px;
         list-style-type: none;
-        margin: 10px;
+        margin-left: 5%;
         border-radius: 5px;
       }
     </style>
 
   </head>
   <body>
-      <h1>Songs</h1>
-      <u1>
+      <div class="container-fluid">
+        <h1>Songs</h1>
+      </div>
+
+      <div class="row">
+          <div class="col-sm-8">
+            <u1>
+              </u1>
+          </div>
+          <div class="col-sm-4">
+            <iframe src="https://open.spotify.com/embed/user/sonallm/playlist/0gCbr7GXmhEpTutIJhhtH9" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+              <!--Spotify Embedded Web Player-->
+              <script src="https://sdk.scdn.co/spotify-player.js"></script>
+              <script>
+                    window.onSpotifyWebPlaybackSDKReady = () => {
+                const token = 'BQBD8wLn7xIf8Y9lvvIrzRXhqoEeh0sOa7qUl01CqOj_PI_t_r2-czoWG9z71j5I3r5SnFhmdyK1_86rqe9bjqhgwqzj55AOjiz7G4wNkBP27Yh0gi9cfSMosnOKV9U2Wwjs3wisIu3Tmu7SS1gCJN5uEqNCNDhNMzfH';
+                const player = new Spotify.Player({
+                  name: 'Web Playback SDK Quick Start Player',
+                  getOAuthToken: cb => { cb(token); }
+                });
+
+                // Error handling
+                player.addListener('initialization_error', ({ message }) => { console.error(message); });
+                player.addListener('authentication_error', ({ message }) => { console.error(message); });
+                player.addListener('account_error', ({ message }) => { console.error(message); });
+                player.addListener('playback_error', ({ message }) => { console.error(message); });
+
+                // Playback status updates
+                player.addListener('player_state_changed', state => { console.log(state); });
+
+                // Ready
+                player.addListener('ready', ({ device_id }) => {
+                  console.log('Ready with Device ID', device_id);
+                });
+
+                // Not Ready
+                player.addListener('not_ready', ({ device_id }) => {
+                  console.log('Device ID has gone offline', device_id);
+                });
+
+                // Connect to the player!
+                player.connect();
+              };
+              </script>
 
 
-      </u1>
+          </div>
+          
+        </div>
+
+      
 
       <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
       <script>
@@ -53,20 +106,61 @@
           messagingSenderId: "232996395712"
         };
         firebase.initializeApp(config);
-
-      var database = firebase.database();
-      var ul = document.querySelector("u1");
-
+        
       
+      $.get('/login', function(req, res) {
+var scopes = 'user-read-private user-read-email';
+res.redirect('https://accounts.spotify.com/authorize' +
+  '?response_type=code' +
+  '&client_id=' + "937fbe05960b4630a43d4a8eb9a35a11" +
+  (scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
+  '&redirect_uri=' + encodeURIComponent(redirect_uri));
+});
 
-      database.ref().on('child_added', function(data) {
-        var listItem = document.createElement("li");
-        listItem.textContent = data.val().songTitle;
-        ul.appendChild(listItem);
-      });
 
+        function httpGet(theUrl)
+        {
+          console.log(theUrl);
+          var xmlHttp = new XMLHttpRequest();
+          xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+          xmlHttp.send( null );
+          //there is no error handling!
+          return xmlHttp.responseText;
+        }
 
+        //display song queue in real time
+        var database = firebase.database();
+        var ul = document.querySelector("u1");
+        database.ref().on('child_added', function(data) {
+          var listItem = document.createElement("li");
+          listItem.className = "item";
+        //listItem.textContent = data.val().songTitle + ", " + data.val().artist;
+          var songTitle = data.val().songTitle;
+          var artist = data.val().artist;
+          var songSplit = songTitle.split(" ");
+          var songURL = songSplit[0] + "";
+          for (i = 1; i < songSplit.length; i++) {songURL= songURL + "%20"+songSplit[i]};
+          var infoURL =  "https://api.spotify.com/v1/search?q=" + songURL + "&type=track&market=US&limit=1&offset=5";
+          var outputJSON = JSON.parse(httpGet(infoURL));
+          var songID = outputJSON.tracks.items["0"].id;
+          //var songName = outputJSON.tracks.items["0"].name;
+          //var songHTTPendpoint = 	"https://api.spotify.com/v1/tracks/"+songID;
+          listItem.textContent = songTitle;
+          //console.log(outputJSON);
+          ul.appendChild(listItem);
+          //<iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 
+          //$("#item").load(infoURL).text;
+          //listItem.textContent = infoURL// 
+          //$("#item").load("https://api.spotify.com/v1/search?q=Muse&type=track%2Cartist&market=US&limit=10&offset=5");
+          //ul.appendChild(listItem);
+          
+
+          });
+        
+        
       </script>
+
+    
   </body>
 </html>
