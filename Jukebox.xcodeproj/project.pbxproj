@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		6020725622345C56003CBC0B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6020725522345C55003CBC0B /* GoogleService-Info.plist */; };
+		603F414822348A020095F34F /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 603F414722348A020095F34F /* SpotifyiOS.framework */; };
 		609BAE02223455AE002D008A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609BAE01223455AE002D008A /* AppDelegate.swift */; };
 		609BAE04223455AE002D008A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609BAE03223455AE002D008A /* ViewController.swift */; };
 		609BAE07223455AE002D008A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 609BAE05223455AE002D008A /* Main.storyboard */; };
 		609BAE09223455B0002D008A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 609BAE08223455B0002D008A /* Assets.xcassets */; };
 		609BAE0C223455B0002D008A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 609BAE0A223455B0002D008A /* LaunchScreen.storyboard */; };
-		60FDAECD223473900079BF75 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60FDAECC223473900079BF75 /* SpotifyiOS.framework */; };
 		BB132C705EEFE7EA7BD8D1FA /* Pods_Jukebox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E79F9213105EE97935D7A64 /* Pods_Jukebox.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,6 +21,7 @@
 		1E79F9213105EE97935D7A64 /* Pods_Jukebox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jukebox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49ECFC0ECDDB2D49AEFE640E /* Pods-Jukebox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jukebox.release.xcconfig"; path = "Pods/Target Support Files/Pods-Jukebox/Pods-Jukebox.release.xcconfig"; sourceTree = "<group>"; };
 		6020725522345C55003CBC0B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		603F414722348A020095F34F /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		609BADFE223455AE002D008A /* Jukebox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jukebox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		609BAE01223455AE002D008A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		609BAE03223455AE002D008A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -28,7 +29,6 @@
 		609BAE08223455B0002D008A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		609BAE0B223455B0002D008A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		609BAE0D223455B0002D008A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		60FDAECC223473900079BF75 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		9C5772EAFEDC331A941F8A90 /* Pods-Jukebox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jukebox.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Jukebox/Pods-Jukebox.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -38,7 +38,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB132C705EEFE7EA7BD8D1FA /* Pods_Jukebox.framework in Frameworks */,
-				60FDAECD223473900079BF75 /* SpotifyiOS.framework in Frameworks */,
+				603F414822348A020095F34F /* SpotifyiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +80,7 @@
 		D3348C69C26FB16FF7F80748 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				60FDAECC223473900079BF75 /* SpotifyiOS.framework */,
+				603F414722348A020095F34F /* SpotifyiOS.framework */,
 				1E79F9213105EE97935D7A64 /* Pods_Jukebox.framework */,
 			);
 			name = Frameworks;
@@ -107,7 +107,6 @@
 				609BADFB223455AE002D008A /* Frameworks */,
 				609BADFC223455AE002D008A /* Resources */,
 				9487D54BEF68D82BDDF1F8FD /* [CP] Embed Pods Frameworks */,
-				7F1A6B13842038E54669AAD5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +129,7 @@
 				TargetAttributes = {
 					609BADFD223455AE002D008A = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -166,21 +166,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7F1A6B13842038E54669AAD5 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Jukebox/Pods-Jukebox-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8880D8335D049246F5DF6CCE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -205,20 +190,24 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Jukebox/Pods-Jukebox-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Jukebox/Pods-Jukebox-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/OAuthSwift/OAuthSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OAuthSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Jukebox/Pods-Jukebox-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Jukebox/Pods-Jukebox-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -376,6 +365,7 @@
 			baseConfigurationReference = 9C5772EAFEDC331A941F8A90 /* Pods-Jukebox.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VC465BEP2A;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -390,6 +380,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jacobsonal.Jukebox;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -400,6 +391,7 @@
 			baseConfigurationReference = 49ECFC0ECDDB2D49AEFE640E /* Pods-Jukebox.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VC465BEP2A;
 				FRAMEWORK_SEARCH_PATHS = (
